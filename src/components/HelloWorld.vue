@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <img :src="require('@/assets/logo.png')">
+
     <svg>
       <g>
         <path d="M 50,100 A 1,1 0 0 1 50,0"/>
@@ -28,7 +28,74 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+  $transition-duration: 2s;
+  $path-length: 157px; // Retrieved using SVG's getTotalLength()
+
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    overflow: visible;
+    width: 100px;
+    height: 150px;
+
+  g {
+    animation: slide $transition-duration linear infinite;
+
+  &:nth-child(2) {
+     animation-delay: $transition-duration / 4;
+
+  path {
+    animation-delay: $transition-duration / 4;
+    stroke-dasharray: 0px $path-length + 1;
+    stroke-dashoffset: 1px;
+  }
+  }
+  }
+
+  path{
+    stroke: url(#gradient);
+    stroke-width: 20px;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 0 $path-length;
+    stroke-dashoffset: 0;
+    animation: escalade $transition-duration cubic-bezier(0.8, 0, 0.2, 1) infinite;
+  }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(50px);
+    }
+  }
+
+  @keyframes escalade {
+    0% {
+      stroke-dasharray: 0 $path-length;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: $path-length - 1 $path-length;
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dasharray: $path-length - 1 $path-length;
+      stroke-dashoffset: -($path-length - 1);
+    }
+  }
 h3 {
   margin: 40px 0 0;
 }
