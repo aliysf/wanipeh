@@ -15,6 +15,9 @@
       Ayam woku,
       Timus,
       Kue Sagu
+<br>
+<b>Nasi Praktis:</b>
+Nasi Mandhi, Nasi Kebuli, Nasi Briyani
       <hr>
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
