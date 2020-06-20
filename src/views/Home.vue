@@ -6,7 +6,7 @@
       <b>Sedia</b>
       <hr>
       <b>Frozen food :</b>
-      Dinsum,
+      Dimsum,
       Pastel,
       Risol mayo,
       Sambosa
